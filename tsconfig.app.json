@@ -8,7 +8,7 @@
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
 
     /* Bundler mode */
     "moduleResolution": "Bundler",
