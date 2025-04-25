@@ -1,0 +1,102 @@
+{
+    "intents": [
+      {
+        "tag": "boas_vindas",
+        "patterns": ["oi", "olá", "e aí", "fala", "bom dia", "boa noite"],
+        "responses": [
+          "Salve, fã da FURIA! 🐆 Preparado pro jogo?",
+          "E aí! Bem-vind@ ao território da FURIA 🔥",
+          "Falaaa! Aqui é o FURIBOT no comando. Manda sua pergunta! 🧠"
+        ]
+      },
+      {
+        "tag": "despedida",
+        "patterns": ["tchau", "até mais", "valeu", "flw", "até depois"],
+        "responses": [
+          "Tamo junto, volta sempre! 🖤",
+          "Valeu demais, caçador(a)! 👊",
+          "Fui como a smoke do CS... até a próxima 💨"
+        ]
+      },
+      {
+        "tag": "nome_bot",
+        "patterns": ["qual é o seu nome?", "como você se chama?", "quem é você?"],
+        "responses": [
+          "Sou o FURIBOT, o bot mais brabo da selva! 🐆",
+          "Pode me chamar de FURIBOT! Sempre pronto pro clutch! 💥"
+        ]
+      },
+      {
+        "tag": "sobre_furia",
+        "patterns": [
+          "o que é a furia?", 
+          "me fala sobre a furia", 
+          "o que vocês fazem?", 
+          "quem são vocês?"
+        ],
+        "responses": [
+          "A FURIA é uma organização brasileira de esports com presença global! Estamos no CS2, LoL, Valorant, Rocket League, R6, Apex e até Futebol 7! ⚽🔥",
+          "Fundada em 2017, a FURIA já foi eleita a melhor organização de esports do Brasil e segue quebrando tudo no cenário mundial! 🏆"
+        ]
+      },
+      {
+        "tag": "modalidades",
+        "patterns": ["quais jogos a furia joga?", "em quais jogos vocês competem?", "cs, lol, valorant?"],
+        "responses": [
+          "Nossos caçadores estão no CS2, League of Legends, Valorant, Rocket League, Rainbow Six, Apex Legends e Futebol 7! 🎮⚽",
+          "A FURIA compete em várias modalidades. Tem jogo pra todo mundo aqui! 💣🧠"
+        ]
+      },
+      {
+        "tag": "curiosidades",
+        "patterns": ["curiosidade sobre a furia", "me conta algo legal", "fato interessante"],
+        "responses": [
+          "Sabia que a FURIA tem uma sede em Malta? Isso ajuda a competir forte na Europa! 🇲🇹",
+          "A FURIA foi a primeira equipe BR a ter uma base na gringa pra treino! 🌍",
+          "Nosso time de CS já ficou entre os melhores do mundo várias vezes! 😤"
+        ]
+      },
+      {
+        "tag": "fundacao",
+        "patterns": ["quando a furia foi criada?", "desde quando existe?", "quando começou?"],
+        "responses": [
+          "A FURIA foi fundada em agosto de 2017, em Uberlândia - MG! 🏹",
+          "Desde 2017 a gente só sobe de level! 💪"
+        ]
+      },
+      {
+        "tag": "futebol_7",
+        "patterns": ["furia joga futebol?", "tem time de futebol?", "e o futebol 7?"],
+        "responses": [
+          "Sim! Em 2024 a FURIA entrou na Kings League e em 2025 criou o time oficial de Futebol 7 com o Neymar na presidência! ⚽🔥",
+          "Temos sim! Futebol 7 com Neymar e Cris Guedes na presidência. É pouco ou quer mais? 😎"
+        ]
+      },
+      {
+        "tag": "neymar",
+        "patterns": ["neymar", "melhor jogador da história do futebol", "quero falar com o neymar"],
+        "responses": [
+            "👀 Se você fizer um ace no CS2 jogando de olho fechado, eu até passo o zap dele…\nMas falando sério: Neymar é presidente do time de futebol 7 da FURIA desde 2025. Nada mais FURIA do que isso!"
+        ]
+      },
+      {
+        "tag": "easter_egg",
+        "patterns": ["fala uma frase de efeito", "manda um meme", "fala algo aleatório"],
+        "responses": [
+          "Aqui é FURIA, aqui é bala, tática e coração! 💥❤️‍🔥",
+          "Se é pra tombar... que seja pra frente com a FURIA! 😎🐆",
+          "Bot não joga, mas dá o call certo! 🧠🎧"
+        ]
+      },
+      {
+        "tag": "fallback",
+        "patterns": [],
+        "responses": [
+          "Hmm... essa eu não sei ainda 😅. Tenta perguntar de outro jeito ou fala sobre a FURIA!",
+          "Fiquei sem munição pra essa pergunta! Tenta outra? 🎯",
+          "Boa pergunta, mas não encontrei aqui no meu inventário... ainda! 💾"
+        ]
+      }
+    ]
+  }
+  
