@@ -1,13 +1,18 @@
 import React from "react";
-import './index.css'
+import './style.css'
+import '../../index.css'
 
 type ContainerProps = {
-    children: React.ReactNode
+    children: React.ReactNode,
+    style: {
+        backgroundColor: string,
+        color: string
+    }
 }
-const Container = ({children}: ContainerProps) => {
+const Container = ({children, style}: ContainerProps) => {
 
     return (
-        <div className="content">
+        <div className="content" style = {style}>
             {children}
         </div>
     );
