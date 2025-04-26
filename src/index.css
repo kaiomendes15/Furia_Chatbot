@@ -1,31 +1,43 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Poppins";
-}
-
 body {
-  background-color: white;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
-  height: 100vh;
-  box-sizing: border-box;
-  
+  min-height: 100vh;
+  background-color: #f0f0f0;
 }
 
-a {
-  text-decoration: none;
-}
-/* Contêiner principal */
-.container {
+/* Container que simula o smartphone */
+.content {
+  padding: 15px;
   width: 100vw;
-  max-width: 430px; /* Mantém a largura máxima da tela do iPhone 14 */
-  height: calc(100vw * (932 / 430)); /* Proporção da tela do iPhone 14 */
+  max-width: 430px;
+  height: calc(100vw * (932 / 430));
   max-height: 932px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  
+  /* Transição suave para mudanças de tema */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Adicione isto para o modo escuro */
+.content.dark-mode {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 430px) {
+  body {
+    background-color: #e8e8e8;
+  }
+  
+  .content {
+    border-radius: 40px;
+    margin: 2rem 0;
+    height: 932px; /* Altura fixa do dispositivo */
+    width: 430px;
+    max-height: none; /* Remove a limitação */
+  }
 }
 
 @media (min-width: 1024px) {
@@ -45,7 +57,7 @@ a {
   justify-content: center;
   align-items: center;
   height: 50%;
-  background-color: white; /* Fundo cinza claro para destacar o contêiner */
+  background-color: #f0f0f0; /* Fundo cinza claro para destacar o contêiner */
   }
   header {
     max-width: calc(100vh * (430 / 932));
