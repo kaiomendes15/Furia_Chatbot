@@ -1,0 +1,53 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Container do botão */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #75747400;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Esconde o input original */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Ícone padrão (lua) */
+.switch-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: background-image 0.3s ease;
+  background-image: url('../../assets/moon-stars-svgrepo-com.svg');
+  filter: brightness(0); /* preto */
+}
+
+/* Quando ativado (ícone do sol branco) */
+.switch input:checked + .switch-icon {
+  background-image: url('../../assets/sun-2-svgrepo-com.svg');
+  filter: brightness(10); /* branco */
+}
+
+/* Posição do botão na tela */
+.switcher-position {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}

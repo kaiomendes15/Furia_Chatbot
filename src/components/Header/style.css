@@ -1,0 +1,11 @@
+.furia-logo {
+    width: 10%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 5px 20px 5px;
+}

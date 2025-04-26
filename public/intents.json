@@ -66,7 +66,7 @@
       },
       {
         "tag": "futebol_7",
-        "patterns": ["furia joga futebol?", "tem time de futebol?", "e o futebol 7?"],
+        "patterns": ["furia joga futebol?", "tem time de futebol?", "e o futebol 7?", "futebol 7"],
         "responses": [
           "Sim! Em 2024 a FURIA entrou na Kings League e em 2025 criou o time oficial de Futebol 7 com o Neymar na presidência! ⚽🔥",
           "Temos sim! Futebol 7 com Neymar e Cris Guedes na presidência. É pouco ou quer mais? 😎"

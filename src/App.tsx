@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import Container from './components/Container'
 import './App.css'
+import { useDarkMode } from './contexts/DarkModeContext'
+import Header from './components/Header'
+import Chat from './components/Chat'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
+  const theme = {
+    backgroundColor: darkMode ? "#1a1a1a" : "#f5f5f5",
+    color: darkMode ? "#e0e0e0" : "#333333"
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Container style={theme}>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh' /* Garante altura total em mobile */
+      }}>
+        <Header onChange={toggleDarkMode} backgroundColor={theme.backgroundColor}/>
+        <Chat style={theme} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Container>
+  );
 }
 
 export default App
