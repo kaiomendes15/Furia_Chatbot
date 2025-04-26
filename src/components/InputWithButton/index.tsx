@@ -2,9 +2,14 @@ import { Field, Input, defineStyle, IconButton, Flex } from "@chakra-ui/react";
 import { IoMdSend } from "react-icons/io";
 import { useDarkMode } from '../../contexts/DarkModeContext';
 
+type InputWithButtonProps = {
+  onClick: React.MouseEventHandler<HTMLButtonElement>,
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  value: string
+}
 
 
-const InputWithButton = () => {
+const InputWithButton = ({ onClick, onChange, value }: InputWithButtonProps) => {
   const { darkMode} = useDarkMode();
 
   const floatingStyles = defineStyle({
@@ -35,6 +40,8 @@ const InputWithButton = () => {
     <Field.Root w="full">
       <Flex pos="relative" w="full" gap={2}>
         <Input
+          onChange={onChange}
+          value={value}
           transition="color 0.2s ease, border-color 0.2s ease"
           className="peer"
           placeholder=" "
@@ -56,6 +63,7 @@ const InputWithButton = () => {
           flex={1}
         />
         <IconButton
+          onClick={onClick}
           aria-label="Send message"
           bg="gray.800"
           _hover={{ bg: "gray.700" }}

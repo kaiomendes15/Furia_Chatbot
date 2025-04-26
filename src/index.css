@@ -3,68 +3,53 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
   background-color: #f0f0f0;
+  overflow: hidden; /* Impede scroll global */
 }
 
-/* Container que simula o smartphone */
+/* Container principal - iPhone 14 Pro Max (430x932) */
+/* Ajuste para mobile-first */
 .content {
-  padding: 15px;
   width: 100vw;
+  height: 100vh; /* Ocupa toda a altura da tela */
   max-width: 430px;
-  height: calc(100vw * (932 / 430));
-  max-height: 932px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  
-  /* Transição suave para mudanças de tema */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Adicione isto para o modo escuro */
+/* Modo escuro */
 .content.dark-mode {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-@media (min-width: 430px) {
-  body {
-    background-color: #e8e8e8;
-  }
-  
+/* Telas maiores que iPhone 14 Pro Max */
+/* Telas maiores que mobile */
+@media (min-width: 430px) and (min-height: 932px) {
   .content {
+    height: 932px;
     border-radius: 40px;
     margin: 2rem 0;
-    height: 932px; /* Altura fixa do dispositivo */
-    width: 430px;
-    max-height: none; /* Remove a limitação */
   }
 }
 
-@media (min-width: 1024px) {
-  .content{
-    margin-top: 1rem;
-    margin-bottom: 5rem;
-    max-width: calc(100vh * (430 / 932)); /* Calcula a largura com base na altura, mantendo proporção */
-    max-height: 100%; /* Altura total da viewport */
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Para um efeito de leve sombra */
-    border-radius: 25px; /* Canto arredondado */
-  } 
-  body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50%;
-  background-color: #f0f0f0; /* Fundo cinza claro para destacar o contêiner */
+/* Ajuste fino para monitores widescreen */
+@media (min-width: 1920px) and (min-height: 1080px) {
+  .content {
+    transform: scale(1); /* Mantém tamanho original */
+    margin: 0;
   }
-  header {
-    max-width: calc(100vh * (430 / 932));
-    max-height: 100vh;
+}
+
+/* Tablet e dispositivos médios */
+@media (max-width: 430px), (max-height: 932px) {
+  .content {
+    border-radius: 0; /* Remove borda em dispositivos menores */
+    height: 100vh;
+    max-height: none;
   }
-  .tela {
-    max-height: 932px;
-  }
-  
 }
