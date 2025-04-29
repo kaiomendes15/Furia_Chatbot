@@ -1,4 +1,4 @@
 declare type Message = {
-    role: 'user' | 'assistant' | 'system';
+    role: 'user' | 'model';
     content: string
 }
