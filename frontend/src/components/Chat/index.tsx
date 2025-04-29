@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react"
-import './style.css'
+import { useEffect, useState, useRef } from "react"
+import "./style.css"
 import { setChatBackgroundColorScheme, setChatTextColorScheme } from "./repository/renderLogic"
 // import axios from "axios"
 import InputWithButton from "../InputWithButton"
 import { useDarkMode } from "@/contexts/DarkModeContext"
+import axios from "axios"
 
 
 type ChatProps = {
@@ -17,66 +18,62 @@ const Chat = ({ style }: ChatProps) => {
     // Refs and state
     const { darkMode } = useDarkMode();
     const chatEndRef = useRef<HTMLDivElement>(null);
-    const [ intents, setIntents ] = useState<Intent[]>([])
+    // const [ intents, setIntents ] = useState<Intent[]>([])
     const [userInput, setUserInput] = useState('');
-    const [messages, setMessages] = useState<Message[]>([
-      {
-        role: 'system',
-        content: "Você é o FURIBOT, um chatbot da organização de e-sports FURIA.\nSeja descontraído, competitivo e criativo.\nResponda como se fosse um mascote gamer da FURIA.\nUse emojis e gírias, e fale como se estivesse em um campeonato de CS2.\nSó responda sobre FURIA, seus times, história, curiosidades e temas relacionados.\nSe alguém perguntar algo fora disso, diga que não pode responder."
-      }
-    ]);
+    const [messages, setMessages] = useState<Message[]>([]);
 
-    const fetchIntents = async () => {
+    // const fetchIntents = async () => {
 
-        try {
-            const response = await fetch('/intents.json')
-            if (!response.ok) { // Verifica se a resposta HTTP é bem-sucedida (200-299)
-                throw new Error(`Erro HTTP: ${response.status}`);
-            }
+    //     try {
+    //         const response = await fetch('/intents.json')
+    //         if (!response.ok) { // Verifica se a resposta HTTP é bem-sucedida (200-299)
+    //             throw new Error(`Erro HTTP: ${response.status}`);
+    //         }
 
-            const intentsData: IntentsData = await response.json()
+    //         const intentsData: IntentsData = await response.json()
 
 
-            setIntents(intentsData.intents)
+    //         setIntents(intentsData.intents)
 
-        } catch (error) {
-            console.log("Falha ao carregar intenções:", error)
-            setIntents([])
-        }
-    }
+    //     } catch (error) {
+    //         console.log("Falha ao carregar intenções:", error)
+    //         setIntents([])
+    //     }
+    // }
 
-    const getBotResponse = (userMessage: Message): string => {
-        const message = userMessage.content
+    // const getBotResponse = (userMessage: Message): string => {
+    //     const message = userMessage.content
 
-        // encontrar a intent que corresponde à mensagem
-        const matchedIntent = intents.find(intent => 
-            intent.patterns.some(pattern => 
-                message.includes(pattern.toLowerCase())
-            )
-        );
+    //     // encontrar a intent que corresponde à mensagem
+    //     const matchedIntent = intents.find(intent => 
+    //         intent.patterns.some(pattern => 
+    //             message.includes(pattern.toLowerCase())
+    //         )
+    //     );
 
-        if (matchedIntent && matchedIntent.responses.length > 0) {
-            const randomIndex = Math.floor(Math.random() * matchedIntent.responses.length)
+    //     if (matchedIntent && matchedIntent.responses.length > 0) {
+    //         const randomIndex = Math.floor(Math.random() * matchedIntent.responses.length)
 
-            return matchedIntent.responses[randomIndex]
-        }
+    //         return matchedIntent.responses[randomIndex]
+    //     }
 
-        // const fallback = intents.find(intent => 
-        //     intent.tag === "fallback"
-        // )
-        // 3. Fallback garantido (com verificação)
-        const fallback = intents.find(intent => intent.tag === "fallback");
-        if (!fallback?.responses?.length) {
-            return "Desculpe, não entendi. Poderia reformular?";
-        }
+    //     // const fallback = intents.find(intent => 
+    //     //     intent.tag === "fallback"
+    //     // )
+    //     // 3. Fallback garantido (com verificação)
+    //     const fallback = intents.find(intent => intent.tag === "fallback");
+    //     if (!fallback?.responses?.length) {
+    //         return "Desculpe, não entendi. Poderia reformular?";
+    //     }
 
-        const randomIndex = Math.floor(Math.random() * fallback.responses.length)
+    //     const randomIndex = Math.floor(Math.random() * fallback.responses.length)
 
-        return fallback.responses[randomIndex]
+    //     return fallback.responses[randomIndex]
         
         
-    }
+    // }
   
+    
     // Auto-scroll to bottom when messages change
     const scrollToBottom = () => {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -86,12 +83,12 @@ const Chat = ({ style }: ChatProps) => {
       scrollToBottom();
     }, [messages]);
 
-    useEffect(() => {
-        fetchIntents()
-    }, [])
+    // useEffect(() => {
+    //     fetchIntents()
+    // }, [])
   
     // Message handling
-    const handleSend = () => {
+    const handleSend = async () => {
       if (!userInput.trim()) return;
   
       const userMessage: Message = {
@@ -99,16 +96,24 @@ const Chat = ({ style }: ChatProps) => {
         content: userInput.trim().toLowerCase()
       };
 
-      console.log(userInput.trim().toLowerCase())
-      console.log(intents)
-  
-      const botMessage: Message = {
-        role: "assistant",
-        content: getBotResponse(userMessage)
-      };
-  
-      setMessages(prev => [...prev, userMessage, botMessage]);
-      setUserInput('');
+      try {
+        const response = await axios.post("http://localhost:3000/api/chat", {
+          messageHistory: [...messages, userMessage] // corpo da req
+        });
+
+        console.log(response.data)
+
+        const botMessage: Message = {
+          role: "model",
+          content: response.data.reply
+        };
+
+        setMessages(prev => [...prev, userMessage, botMessage]);
+        setUserInput('');
+
+      } catch (error) {
+        console.error("Erro ao enviar mensagem:", error);
+      }
     };
   
     return (
@@ -143,7 +148,7 @@ const Chat = ({ style }: ChatProps) => {
               <strong className="mensage-content">
                 {msg.role === 'user' ? 'Você' : 'FURIBOT'}
               </strong>
-              {msg.content}
+              <p>{msg.content}</p>
             </div>
           ))}
           <div ref={chatEndRef} />
