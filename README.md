@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# FURIBOT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
+Este é o FURIBOT, o chatbot oficial para quem é FURIOSO de coração! Aqui, você vai trocar ideia com uma IA que encarna o espírito do nosso mascote: cheio de energia, competitivo até o último round e com aquele jeitão descontraído que só a FURIA tem. Seja pra falar de CS2, relembrar jogadas épicas ou só bater um papo, o FURIBOT tá pronto pra te responder como se estivesse no palco de um Major. Bora interagir e sentir a adrenalina? #DIADEFURIA
 
-Currently, two official plugins are available:
+## Índice
+- [FURIBOT](#furibot)
+  - [Descrição](#descrição)
+  - [Índice](#índice)
+  - [Instalação](#instalação)
+  - [Uso](#uso)
+  - [Contribuição](#contribuição)
+  - [Licença](#licença)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Instalação
+1. Clone o repositório:
+  ```bash
+  git clone https://github.com/kaiomendes15/ExpenseControlApplication.git
+  ```
+2. Navegue até o diretório do projeto:
+  ```bash
+  cd projeto-nome
+  ```
+3. Instale as dependências:
+  ```bash
+  npm install
+  ```
 
-## Expanding the ESLint configuration
+## Uso
+Instruções para executar o projeto:
+- vá no site google API Studio e gere uma chave de acesso à API do Gemini
+- crie um arquivo com o nome `.env` e cole o texto abaixo:
+  ```javascript
+  PORT=3000
+  GEMINI_API_KEY=sua chave de acesso
+  ```
+- execute o programa
+  ```javascript
+  npm run dev
+  ```
+Adicione exemplos de uso ou capturas de tela, se necessário.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Contribuição
+1. Faça um fork do projeto.
+2. Crie uma branch para sua feature:
+  ```bash
+  git checkout -b minha-feature
+  ```
+3. Commit suas alterações:
+  ```bash
+  git commit -m "Adiciona minha feature"
+  ```
+4. Envie para o repositório remoto:
+  ```bash
+  git push origin minha-feature
+  ```
+5. Abra um Pull Request.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Licença
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
