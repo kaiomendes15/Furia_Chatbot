@@ -5,7 +5,20 @@ import { setChatBackgroundColorScheme, setChatTextColorScheme } from "./reposito
 import InputWithButton from "../InputWithButton"
 import { useDarkMode } from "@/contexts/DarkModeContext"
 import axios from "axios"
+import axiosRetry from "axios-retry"
 import TypingIndicator from "../TypingIndicator"
+
+// configura o retry do axios
+// qualquer requisiÇão que falhar com status >= 500 ou ECONNABORTED vai ser re-enviada 3 vezes, com delay de 1 segundo entre cada tentativa
+axiosRetry(axios, {
+  retries: 3,
+  retryDelay: (retryCount) => retryCount * 1000,
+  retryCondition: (error) => {
+    const status = error?.response?.status;
+    return (status !== undefined && status >= 500) || error.code === "ECONNABORTED";
+  }
+});
+
 
 
 type ChatProps = {
@@ -70,13 +83,15 @@ const Chat = ({ style }: ChatProps) => {
     };
   
     return (
+      
       <div style={{ 
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        position: 'relative'
+        position: 'relative',
       }}>
-        {/* Messages area with scroll */}
+        <div style={{ height: '60px' }} /> {/* Espaço equivalente ao header */}
+        {/* { Área de mensagens } */}
         <div
           className={darkMode ? "chat-messages-dark" : "chat-messages-white"}
           style={{ 
@@ -84,8 +99,8 @@ const Chat = ({ style }: ChatProps) => {
             flex: 1,
             overflowY: 'auto',
             padding: '0 1rem',
-            paddingTop: '60px', // Space for header
-            paddingBottom: '80px' // Space for input
+            paddingTop: '100px', // antes era 60px
+            paddingBottom: '30px' // mantém o espaço inferior
           }}
         >
           {messages.map((msg, idx) => (
@@ -109,13 +124,12 @@ const Chat = ({ style }: ChatProps) => {
           <div ref={chatEndRef} />
         </div>
   
-        {/* Fixed input at bottom */}
-        <div style={{
+        {/* input fixo na parte inferior da tela */}
+        <div className={darkMode ? "div-input-black" : "div-input-white"} style={{
           position: 'sticky',
           bottom: 0,
-          background: style.backgroundColor,
           padding: '1rem',
-          borderTop: `1px solid ${style.color}20` // Subtle border
+          borderTop: `1px solid ${style.color}20` // borda
         }}>
           {isTyping && (
             <div className="message bot">

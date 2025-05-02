@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #87847f;
   overflow: hidden; /* Impede scroll global */
 }
 
@@ -20,11 +20,9 @@ body {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-}
-
-/* Modo escuro */
-.content.dark-mode {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  box-shadow: 9px 17px 36px -8px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 9px 17px 36px -8px rgba(0,0,0,0.6);
+  -moz-box-shadow: 9px 17px 36px -8px rgba(0,0,0,0.6);
 }
 
 /* Telas maiores que iPhone 14 Pro Max */

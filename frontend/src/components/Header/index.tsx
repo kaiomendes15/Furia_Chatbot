@@ -21,7 +21,7 @@ const Header = ({onChange, backgroundColor, isDarkMode}: HeaderProps) => {
   }
 
     return (
-      <header style={{
+      <header className="header" style={{
         position: 'sticky',
         top: 0,
         zIndex: 10,
@@ -30,7 +30,8 @@ const Header = ({onChange, backgroundColor, isDarkMode}: HeaderProps) => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        backdropFilter: 'blur(10px)',
       }}>
         <img className="furia-logo" src={FuriaLogo} alt="Furia-Logo" style={{ height: '40px' }}/>
         <img className="furia-logo-branca" src={setLogo(isDarkMode)} alt="Furia-Logo" style={{ width: '85px' }}/>

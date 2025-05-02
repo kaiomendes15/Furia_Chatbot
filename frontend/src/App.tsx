@@ -18,7 +18,9 @@ function App() {
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        height: '100vh' /* Garante altura total em mobile */
+        height: '100vh', /* Garante altura total em mobile */
+        justifyContent: 'space-between',
+        gap: '1rem',
       }}>
         <Header onChange={toggleDarkMode} backgroundColor={theme.backgroundColor} isDarkMode={darkMode}/>
         <Chat style={theme} />

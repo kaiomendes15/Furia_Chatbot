@@ -60,11 +60,23 @@ display: none;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.chat-messages-dark::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+.chat-messages-white::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
 .chat-messages-white {
   background-image: url('../../assets/furia_bg_white.png'); /* pode ser local ou link externo */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.chat-messages-dark, .chat-messages-white {
+  scroll-padding-top: 150px; /* ou a altura do seu header */
+  padding-top: 80px;
 }
   
 .mensage-content {
@@ -80,6 +92,14 @@ opacity: 0.8;
 
 .italico {
   font-style: italic;
+}
+
+.div-input-white {
+  background-color: rgba(255, 255, 255, 0.8); /* branco com 80% opacidade */
+}
+
+.div-input-black {
+  background-color: rgba(0, 0, 0, 0.6); /* branco com 80% opacidade */
 }
 
   
