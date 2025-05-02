@@ -18,7 +18,5 @@ app.use(cors());
 
 app.use(chatRoutes);
 
-
-app.listen(process.env.PORT, () => {
-    console.log("Servidor rodando na porta: " + process.env.PORT);
-});
+// Exporta o app para que o Vercel use
+export default app;
