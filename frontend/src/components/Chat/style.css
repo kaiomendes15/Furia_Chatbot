@@ -42,7 +42,7 @@ border-bottom-right-radius: 5px;
 }
   
 /* Mensagens do assistente */
-.mensage-box[data-role="assistant"] {
+.mensage-box[data-role="model"] {
 background: #f1f3f5;
 color: #212529;
 margin-right: auto;
@@ -53,6 +53,19 @@ border-bottom-left-radius: 5px;
 .mensage-box[data-role="system"] {
 display: none;
 }
+
+.chat-messages-dark {
+  background-image: url('../../assets/furia_bg_black.png'); /* pode ser local ou link externo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.chat-messages-white {
+  background-image: url('../../assets/furia_bg_white.png'); /* pode ser local ou link externo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
   
 .mensage-content {
 display: block;
@@ -60,6 +73,15 @@ font-size: 0.8rem;
 margin-bottom: 4px;
 opacity: 0.8;
 }
+
+.negrito {
+  font-weight: bold;
+}
+
+.italico {
+  font-style: italic;
+}
+
   
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

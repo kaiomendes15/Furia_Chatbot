@@ -20,7 +20,7 @@ function App() {
         flexDirection: 'column',
         height: '100vh' /* Garante altura total em mobile */
       }}>
-        <Header onChange={toggleDarkMode} backgroundColor={theme.backgroundColor}/>
+        <Header onChange={toggleDarkMode} backgroundColor={theme.backgroundColor} isDarkMode={darkMode}/>
         <Chat style={theme} />
       </div>
     </Container>

@@ -5,6 +5,7 @@ import { setChatBackgroundColorScheme, setChatTextColorScheme } from "./reposito
 import InputWithButton from "../InputWithButton"
 import { useDarkMode } from "@/contexts/DarkModeContext"
 import axios from "axios"
+import TypingIndicator from "../TypingIndicator"
 
 
 type ChatProps = {
@@ -20,58 +21,9 @@ const Chat = ({ style }: ChatProps) => {
     const chatEndRef = useRef<HTMLDivElement>(null);
     // const [ intents, setIntents ] = useState<Intent[]>([])
     const [userInput, setUserInput] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
+
     const [messages, setMessages] = useState<Message[]>([]);
-
-    // const fetchIntents = async () => {
-
-    //     try {
-    //         const response = await fetch('/intents.json')
-    //         if (!response.ok) { // Verifica se a resposta HTTP é bem-sucedida (200-299)
-    //             throw new Error(`Erro HTTP: ${response.status}`);
-    //         }
-
-    //         const intentsData: IntentsData = await response.json()
-
-
-    //         setIntents(intentsData.intents)
-
-    //     } catch (error) {
-    //         console.log("Falha ao carregar intenções:", error)
-    //         setIntents([])
-    //     }
-    // }
-
-    // const getBotResponse = (userMessage: Message): string => {
-    //     const message = userMessage.content
-
-    //     // encontrar a intent que corresponde à mensagem
-    //     const matchedIntent = intents.find(intent => 
-    //         intent.patterns.some(pattern => 
-    //             message.includes(pattern.toLowerCase())
-    //         )
-    //     );
-
-    //     if (matchedIntent && matchedIntent.responses.length > 0) {
-    //         const randomIndex = Math.floor(Math.random() * matchedIntent.responses.length)
-
-    //         return matchedIntent.responses[randomIndex]
-    //     }
-
-    //     // const fallback = intents.find(intent => 
-    //     //     intent.tag === "fallback"
-    //     // )
-    //     // 3. Fallback garantido (com verificação)
-    //     const fallback = intents.find(intent => intent.tag === "fallback");
-    //     if (!fallback?.responses?.length) {
-    //         return "Desculpe, não entendi. Poderia reformular?";
-    //     }
-
-    //     const randomIndex = Math.floor(Math.random() * fallback.responses.length)
-
-    //     return fallback.responses[randomIndex]
-        
-        
-    // }
   
     
     // Auto-scroll to bottom when messages change
@@ -90,26 +42,27 @@ const Chat = ({ style }: ChatProps) => {
     // Message handling
     const handleSend = async () => {
       if (!userInput.trim()) return;
-  
-      const userMessage: Message = {
-        role: "user",
-        content: userInput.trim().toLowerCase()
-      };
 
       try {
+        const userMessage: Message = {
+          role: "user",
+          content: userInput.trim().toLowerCase()
+        };
+        setMessages(prev => [...prev, userMessage]);
+        setIsTyping(true);
+        setUserInput('');
         const response = await axios.post("http://localhost:3000/api/chat", {
           messageHistory: [...messages, userMessage] // corpo da req
         });
+        setIsTyping(false);
 
-        console.log(response.data)
+        // console.log(response.data)
 
         const botMessage: Message = {
           role: "model",
           content: response.data.reply
         };
-
-        setMessages(prev => [...prev, userMessage, botMessage]);
-        setUserInput('');
+        setMessages(prev => [...prev, botMessage]);
 
       } catch (error) {
         console.error("Erro ao enviar mensagem:", error);
@@ -124,7 +77,8 @@ const Chat = ({ style }: ChatProps) => {
         position: 'relative'
       }}>
         {/* Messages area with scroll */}
-        <div 
+        <div
+          className={darkMode ? "chat-messages-dark" : "chat-messages-white"}
           style={{ 
             ...style,
             flex: 1,
@@ -135,7 +89,8 @@ const Chat = ({ style }: ChatProps) => {
           }}
         >
           {messages.map((msg, idx) => (
-            <div 
+            <div
+              
               key={idx}
               className="mensage-box"
               data-role={msg.role}
@@ -148,7 +103,7 @@ const Chat = ({ style }: ChatProps) => {
               <strong className="mensage-content">
                 {msg.role === 'user' ? 'Você' : 'FURIBOT'}
               </strong>
-              <p>{msg.content}</p>
+              <p dangerouslySetInnerHTML={{ __html: msg.content}}></p>
             </div>
           ))}
           <div ref={chatEndRef} />
@@ -162,6 +117,11 @@ const Chat = ({ style }: ChatProps) => {
           padding: '1rem',
           borderTop: `1px solid ${style.color}20` // Subtle border
         }}>
+          {isTyping && (
+            <div className="message bot">
+              <TypingIndicator />
+            </div>
+          )}
           <InputWithButton 
             onClick={handleSend} 
             onChange={(e) => setUserInput(e.target.value)} 

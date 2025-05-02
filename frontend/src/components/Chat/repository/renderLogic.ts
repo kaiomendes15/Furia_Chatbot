@@ -4,7 +4,7 @@ const setChatTextColorScheme = (darkmode: boolean, role: string): string => {
             return '#212529' 
         }
 
-        if (role === 'assistant') {
+        if (role === 'model') {
             return '#212529'
         }
     }
@@ -22,7 +22,7 @@ const setChatBackgroundColorScheme = (darkmode: boolean, role: string): string =
             return '#d9dadb' 
         }
 
-        if (role === 'assistant') {
+        if (role === 'model') {
             return '#f1f3f5'
         }
     }

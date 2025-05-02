@@ -46,7 +46,7 @@ const InputWithButton = ({ onClick, onChange, value }: InputWithButtonProps) => 
           className="peer"
           placeholder=" "
           bg={darkMode ? "" : ""}
-          color={darkMode ? "white" : "white"}
+          color={darkMode ? "white" : '#212529'}
           borderColor= ""
           _focusVisible={{
             borderColor: darkMode ? "white" : "gray.500",
@@ -55,7 +55,7 @@ const InputWithButton = ({ onClick, onChange, value }: InputWithButtonProps) => 
           }}
           
           _focus={{
-            color: darkMode ? "white" : "white",
+            color: darkMode ? "white" : '#212529',
             boxShadow: "none" // Remove também no estado focus
           }}
           p={4}

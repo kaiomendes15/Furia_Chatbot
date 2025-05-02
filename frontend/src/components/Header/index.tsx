@@ -1,13 +1,25 @@
 import FuriaLogo from'../../assets/Furia_Esports_logo.png'
+import FuriaLogoBranca from '../../assets/furiabranco.png'
+import FuriaLogoPreta from '../../assets/furia.png'
 import SetThemeIcon from '../setThemeIcon'
 import './style.css'
 
 type HeaderProps = {
     onChange: () => void,
     backgroundColor: string,
+    isDarkMode: boolean
 }
 
-const Header = ({onChange, backgroundColor}: HeaderProps) => {
+const Header = ({onChange, backgroundColor, isDarkMode}: HeaderProps) => {
+
+  function setLogo(isDark: boolean) {
+    if (isDark) {
+      return FuriaLogoBranca
+    } else {
+      return FuriaLogoPreta
+    }
+  }
+
     return (
       <header style={{
         position: 'sticky',
@@ -21,6 +33,7 @@ const Header = ({onChange, backgroundColor}: HeaderProps) => {
         backgroundColor: backgroundColor
       }}>
         <img className="furia-logo" src={FuriaLogo} alt="Furia-Logo" style={{ height: '40px' }}/>
+        <img className="furia-logo-branca" src={setLogo(isDarkMode)} alt="Furia-Logo" style={{ width: '85px' }}/>
         <SetThemeIcon onChange={onChange}/>
       </header>
     );
