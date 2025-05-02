@@ -7,8 +7,6 @@ import { useDarkMode } from "@/contexts/DarkModeContext"
 import axios from "axios"
 import axiosRetry from "axios-retry"
 import TypingIndicator from "../TypingIndicator"
-import dotenv from "dotenv";
-dotenv.config();
 
 // configura o retry do axios
 // qualquer requisiÇão que falhar com status >= 500 ou ECONNABORTED vai ser re-enviada 3 vezes, com delay de 1 segundo entre cada tentativa
@@ -66,7 +64,7 @@ const Chat = ({ style }: ChatProps) => {
         setMessages(prev => [...prev, userMessage]);
         setIsTyping(true);
         setUserInput('');
-        const response = await axios.post(`${import.meta.env.BACKEND_URL}`, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}`, {
           messageHistory: [...messages, userMessage] // corpo da req
         });
         setIsTyping(false);
