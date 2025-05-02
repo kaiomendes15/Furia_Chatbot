@@ -90,7 +90,6 @@ const Chat = ({ style }: ChatProps) => {
         height: '100%',
         position: 'relative',
       }}>
-        <div style={{ height: '60px' }} /> {/* Espaço equivalente ao header */}
         {/* { Área de mensagens } */}
         <div
           className={darkMode ? "chat-messages-dark" : "chat-messages-white"}
