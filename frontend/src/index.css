@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}	
+
 /* Reset e centralização base */
 body {
   margin: 0;
@@ -5,15 +9,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
   background-color: #87847f;
-  overflow: hidden; /* Evita scroll global */
+  overflow: auto;
+
 }
 
 /* Conteúdo central: layout mobile-first */
 .content {
   width: 100vw;
-  height: 100dvh; /* Usa 100dvh para melhor suporte a navegadores móveis modernos */
+  height: calc(var(--vh, 1vh) * 100); /* AQUI está o ajuste crítico */
   max-width: 430px;
   display: flex;
   flex-direction: column;

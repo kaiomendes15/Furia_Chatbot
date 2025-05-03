@@ -48,6 +48,8 @@ const Chat = ({ style }: ChatProps) => {
       scrollToBottom();
     }, [messages]);
 
+   
+
     // useEffect(() => {
     //     fetchIntents()
     // }, [])
