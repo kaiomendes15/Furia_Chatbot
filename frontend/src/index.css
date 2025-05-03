@@ -1,3 +1,4 @@
+/* Reset e centralização base */
 body {
   margin: 0;
   padding: 0;
@@ -6,28 +7,24 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #87847f;
-  overflow: hidden; /* Impede scroll global */
+  overflow: hidden; /* Evita scroll global */
 }
 
-/* Container principal - iPhone 14 Pro Max (430x932) */
-/* Ajuste para mobile-first */
+/* Conteúdo central: layout mobile-first */
 .content {
   width: 100vw;
-  height: 100vh; /* Ocupa toda a altura da tela */
+  height: 100dvh; /* Usa 100dvh para melhor suporte a navegadores móveis modernos */
   max-width: 430px;
-  max-height: none;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  box-shadow: 9px 17px 36px -8px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 9px 17px 36px -8px rgba(0,0,0,0.6);
-  -moz-box-shadow: 9px 17px 36px -8px rgba(0,0,0,0.6);
+  box-shadow: 9px 17px 36px -8px rgba(0, 0, 0, 0.6);
+  border-radius: 0; /* Sem bordas em mobile */
 }
 
-/* Telas maiores que iPhone 14 Pro Max */
-/* Telas maiores que mobile */
-@media (min-width: 430px) and (min-height: 932px) {
+/* Telas maiores (simulação do iPhone 14 Pro Max em desktop) */
+@media (min-width: 431px) and (min-height: 933px) {
   .content {
     height: 932px;
     border-radius: 40px;
@@ -35,19 +32,10 @@ body {
   }
 }
 
-/* Ajuste fino para monitores widescreen */
-@media (min-width: 1920px) and (min-height: 1080px) {
+/* Monitores widescreen grandes (ex: 1920x1080) */
+@media (min-width: 1920px) {
   .content {
-    transform: scale(1); /* Mantém tamanho original */
+    transform: scale(1);
     margin: 0;
-  }
-}
-
-/* Tablet e dispositivos médios */
-@media (max-width: 430px), (max-height: 932px) {
-  .content {
-    border-radius: 0; /* Remove borda em dispositivos menores */
-    height: 100vh;
-    max-height: none;
   }
 }
