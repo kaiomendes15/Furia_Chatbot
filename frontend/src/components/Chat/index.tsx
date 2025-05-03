@@ -64,7 +64,7 @@ const Chat = ({ style }: ChatProps) => {
         setMessages(prev => [...prev, userMessage]);
         setIsTyping(true);
         setUserInput('');
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/chat`, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}`, {
           messageHistory: [...messages, userMessage] // corpo da req
         });
         setIsTyping(false);
