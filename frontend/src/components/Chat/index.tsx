@@ -115,7 +115,7 @@ const Chat = ({ style }: ChatProps) => {
               }}
             >
               <strong className="mensage-content">
-                {msg.role === 'user' ? 'Você' : 'FURIBOT'}
+                {msg.role === 'user' ? 'Você' : 'FURICO'}
               </strong>
               <p dangerouslySetInnerHTML={{ __html: msg.content}}></p>
             </div>
