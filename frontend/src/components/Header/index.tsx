@@ -26,7 +26,7 @@ const Header = ({onChange, backgroundColor, isDarkMode}: HeaderProps) => {
         top: 0,
         zIndex: 10,
         background: 'inherit', // Herda o background do container
-        padding: '1rem 1rem 0 1rem',
+        padding: '1rem 1rem 5px 1rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
