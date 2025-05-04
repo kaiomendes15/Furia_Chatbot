@@ -1,5 +1,4 @@
 # FURICO chatbot
-![light mode](/frontend/src/assets/white_theme.png "light mode")
 ![dark mode](/frontend/src/assets/black_theme.png "dark mode")
 
 
