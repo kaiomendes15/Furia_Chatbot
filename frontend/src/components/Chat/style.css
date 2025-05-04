@@ -102,6 +102,30 @@ opacity: 0.8;
   background-color: rgba(0, 0, 0, 0.6); /* branco com 80% opacidade */
 }
 
+.mensage-box p a {
+  color: #4e9eff; /* ou outra cor para links */
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.mensage-box p strong {
+  font-weight: bold;
+}
+
+.mensage-box p em {
+  font-style: italic;
+}
+
+.mensage-box p ul, 
+.mensage-box p ol {
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.mensage-box p li {
+  margin-bottom: 0.5rem;
+}
+
   
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
