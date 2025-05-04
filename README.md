@@ -1,21 +1,28 @@
-# FURIBOT
+# FURICO chatbot
+![light mode](/frontend/src/assets/white_theme.png "light mode")
+![dark mode](/frontend/src/assets/black_theme.png "dark mode")
+
 
 ## Descrição
-Este é o FURIBOT, o chatbot oficial para quem é FURIOSO de coração! Aqui, você vai trocar ideia com uma IA que encarna o espírito do nosso mascote: cheio de energia, competitivo até o último round e com aquele jeitão descontraído que só a FURIA tem. Seja pra falar de CS2, relembrar jogadas épicas ou só bater um papo, o FURIBOT tá pronto pra te responder como se estivesse no palco de um Major. Bora interagir e sentir a adrenalina? #DIADEFURIA
+Este é o FURICO, o chatbot para quem é FURIOSO de coração! Aqui, você vai trocar ideia com uma IA que encarna o espírito do nosso mascote: cheio de energia, competitivo até o último round e com aquele jeitão descontraído que só a FURIA tem. Seja pra falar de CS2, relembrar jogadas épicas ou só bater um papo, o FURICO tá pronto pra te responder como se estivesse no palco de um Major. Bora interagir e sentir a adrenalina? #DIADEFURIA
 
 ## Índice
-- [FURIBOT](#furibot)
+- [FURICO chatbot](#furico-chatbot)
   - [Descrição](#descrição)
   - [Índice](#índice)
-  - [Instalação](#instalação)
-  - [Uso](#uso)
+  - [Utilização](#utilização)
+  - [Instalação para uso local](#instalação-para-uso-local)
+  - [Utilização local](#utilização-local)
   - [Contribuição](#contribuição)
   - [Licença](#licença)
 
-## Instalação
+## Utilização
+Acesse o site da aplicação: [FURICO chatbot](https://furia-chatbot-rust.vercel.app)
+
+## Instalação para uso local
 1. Clone o repositório:
   ```bash
-  git clone https://github.com/kaiomendes15/ExpenseControlApplication.git
+  git clone https://github.com/kaiomendes15/Furia_Chatbot.git
   ```
 2. Navegue até o diretório do projeto:
   ```bash
@@ -26,19 +33,25 @@ Este é o FURIBOT, o chatbot oficial para quem é FURIOSO de coração! Aqui, vo
   npm install
   ```
 
-## Uso
+## Utilização local
 Instruções para executar o projeto:
-- vá no site google API Studio e gere uma chave de acesso à API do Gemini
-- crie um arquivo com o nome `.env` e cole o texto abaixo:
+- Vá no site google API Studio e gere uma chave de acesso à API do Gemini
+- Crie um arquivo `.env` no backend e cole as variáveis de ambiente:
   ```javascript
   PORT=3000
   GEMINI_API_KEY=sua chave de acesso
   ```
-- execute o programa
+- Acesse `frontend/src/components/Chat/index.tsx` e faça a seguinte alteração:
+  ```javascript
+  await axios.post(`${import.meta.env.VITE_BACKEND_URL}`)
+  // altere para:
+  await axios.post(`http://localhost:3000`)
+  ```
+- Execute o programa
   ```javascript
   npm run dev
+  // faça isso tanto nos arquivos do backend quanto no frontend
   ```
-Adicione exemplos de uso ou capturas de tela, se necessário.
 
 ## Contribuição
 1. Faça um fork do projeto.
