@@ -1,5 +1,4 @@
 # FURICO chatbot
-![dark mode](/frontend/src/assets/black_theme.png "dark mode")
 
 
 ## Descrição
