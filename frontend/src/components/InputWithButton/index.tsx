@@ -5,11 +5,12 @@ import { useDarkMode } from '../../contexts/DarkModeContext';
 type InputWithButtonProps = {
   onClick: React.MouseEventHandler<HTMLButtonElement>,
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void,
   value: string
 }
 
 
-const InputWithButton = ({ onClick, onChange, value }: InputWithButtonProps) => {
+const InputWithButton = ({ onClick, onChange, value, onKeyDown }: InputWithButtonProps) => {
   const { darkMode} = useDarkMode();
 
   const floatingStyles = defineStyle({
@@ -41,6 +42,7 @@ const InputWithButton = ({ onClick, onChange, value }: InputWithButtonProps) => 
       <Flex pos="relative" w="full" gap={2}>
         <Input
           onChange={onChange}
+          onKeyDown={onKeyDown}
           value={value}
           transition="color 0.2s ease, border-color 0.2s ease"
           className="peer"

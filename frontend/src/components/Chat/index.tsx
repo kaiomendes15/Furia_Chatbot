@@ -139,7 +139,13 @@ const Chat = ({ style }: ChatProps) => {
           )}
           <InputWithButton 
             onClick={handleSend} 
-            onChange={(e) => setUserInput(e.target.value)} 
+            onChange={(e) => setUserInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault(); // Evita a quebra de linha
+                handleSend();
+              }
+            }} 
             value={userInput}
           />
         </div>
